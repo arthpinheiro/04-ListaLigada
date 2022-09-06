@@ -158,22 +158,7 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	int numero;
-
-	cout << "Digite o elemento a ser excluido: \n";
-	cin >> numero;
-
-	NO* auxExclusao = posicaoElemento(numero);
-
-	if (auxExclusao != NULL) {
-		NO* paraExcluir = auxExclusao;
-		auxExclusao = auxExclusao->prox;
-		free(paraExcluir);
-		cout << "Elemento excluido com sucesso! \n"
-	}
-	else {
-		cout << "O elemento nao esta presente na lista! \n"
-	}
+	
 }
 
 void buscarElemento()
@@ -186,7 +171,7 @@ void buscarElemento()
 	NO* encontrado = posicaoElemento(numero);
 	
 	if (numero != NULL) {
-		cout << "O elemento digitado esta na posicao: " << encontrado << endl;
+		cout << "O elemento digitado esta na posicao: " << encontrado;
 	}
 	else {
 		cout << "Elemento nao encontrado! \n";
