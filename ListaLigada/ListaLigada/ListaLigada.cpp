@@ -166,13 +166,31 @@ void excluirElemento()
 	NO* auxExclusao = posicaoElemento(numero);
 
 	if (auxExclusao != NULL) {
-		NO* paraExcluir = auxExclusao;
-		auxExclusao = auxExclusao->prox;
-		free(paraExcluir);
-		cout << "Elemento excluido com sucesso! \n"
+		NO* aux = primeiro; //variavel aux pega o valor do primeiro elemento da lista
+		NO* paraExcluir = NULL; // elemento pra excluir primeiramente é null
+
+		if (aux->valor == numero) { //aqui é o primeiro if pra verificar se o valor é o primeiro da lista
+			paraExcluir = primeiro; // o elemento pra excluir vira o primeiro da lista
+			primeiro = aux->prox; // já que o primeiro será excluido, o primeiro agora vira o proximo valor da lista, caso n tenha outro valor ele virá NULL
+			free(paraExcluir);
+			cout << "Elemento excluido com sucesso! \n";
+		}
+		else {
+			while (aux->prox != NULL) { // caso n seja o primeiro elemento, ele vai comecar a procurar pelo prox elemento
+				NO* proximo = aux->prox;
+				if (proximo->valor == numero) { // aqui ele pega o valor do prox elemento e verifica se é igual ao numero digitado
+					paraExcluir = aux->prox; // torna o valor paraExcluir o prox
+					proximo->prox = paraExcluir->prox; //coloca o proximo valor para apontar pro proximo valor depois do valor excluido
+					free(paraExcluir);
+					cout << "Elemento excluido com sucesso! \n";
+					break;
+				}
+			}
+			
+		}
 	}
 	else {
-		cout << "O elemento nao esta presente na lista! \n"
+			cout << "O elemento nao esta presente na lista! \n";
 	}
 }
 
